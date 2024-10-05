@@ -1,4 +1,4 @@
-def add(a,d):
+def add(a,b):
     return a+b
 
 def sub(a,b):
