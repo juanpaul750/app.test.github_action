@@ -1,0 +1,40 @@
+name: Python CI # Workflow name #We write in the form of key value pairs
+
+# To trigger the workflow we need to define events
+on:
+  push:   # Events
+    branches:
+      -main # We can add other branches (eg: Staging, production)
+  pull_request:
+    branches:
+      -main
+
+
+
+jobs: #
+  test:
+    runs-on: ubuntu-latest #github provides contains to do the testing
+
+    steps: # for every workflow steps
+      # Step 1: Checkout code from repository
+      - name: check out code
+      - uses: actions/checkout@v4 #(version4) # checkout all the code from the repository
+      
+      # Step 2: Setup a python enviornment
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+      
+      # Setup 3: Install dependencies
+      - name: Install dependencies
+        run:
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step 4: Run tests:
+      - name: Run tests
+        run: pytest
+
+
+
