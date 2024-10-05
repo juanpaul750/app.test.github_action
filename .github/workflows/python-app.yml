@@ -27,12 +27,17 @@ jobs:
       - name: Check Python version
         run: python --version
 
-      # Step 4: Install dependencies
+      # Step 4: Install dependencies and verify pip
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip --version  # Ensure pip is installed correctly
           pip install -r requirements.txt
 
-      # Step 5: Run tests
+      # Step 5: Verify pytest installation
+      - name: Verify pytest installation
+        run: pytest --version  # This ensures pytest is installed
+
+      # Step 6: Run tests
       - name: Run tests
-        run: pytest
+        run: python -m pytest  # Run pytest using python -m for consistency
