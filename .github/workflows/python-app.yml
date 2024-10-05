@@ -4,10 +4,10 @@ name: Python CI # Workflow name #We write in the form of key value pairs
 on:
   push:   # Events
     branches:
-      -main # We can add other branches (eg: Staging, production)
+      - main # We can add other branches (eg: Staging, production)
   pull_request:
     branches:
-      -main
+      - main
 
 
 
@@ -28,7 +28,7 @@ jobs: #
       
       # Setup 3: Install dependencies
       - name: Install dependencies
-        run:
+        run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
